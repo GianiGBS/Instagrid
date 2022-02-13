@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina3_5" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -109,6 +110,11 @@
                                                             <constraint firstItem="bjE-LB-zso" firstAttribute="width" secondItem="79R-PV-jQy" secondAttribute="width" multiplier="0.25" id="XVi-hZ-9Oi"/>
                                                             <constraint firstAttribute="width" secondItem="79R-PV-jQy" secondAttribute="height" multiplier="1:1" id="vvN-gw-F3a"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V9W-GG-Y67" userLabel="Second Top View" customClass="UIImageView">
                                                         <rect key="frame" x="121" y="0.0" width="105" height="105"/>
@@ -130,6 +136,11 @@
                                                             <constraint firstItem="t0L-Z9-59Q" firstAttribute="width" secondItem="V9W-GG-Y67" secondAttribute="width" multiplier="0.25" id="egd-Cb-Hx5"/>
                                                             <constraint firstAttribute="width" secondItem="V9W-GG-Y67" secondAttribute="height" multiplier="1:1" id="yeF-mo-cdZ"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
                                             </stackView>
@@ -155,6 +166,11 @@
                                                             <constraint firstItem="Eae-wX-qIi" firstAttribute="centerY" secondItem="87V-ZH-eH4" secondAttribute="centerY" id="Lv5-3O-Yhp"/>
                                                             <constraint firstItem="Eae-wX-qIi" firstAttribute="centerX" secondItem="87V-ZH-eH4" secondAttribute="centerX" id="kOe-MY-Hre"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z9Z-fh-sdT" userLabel="Second Bottom View" customClass="UIImageView">
                                                         <rect key="frame" x="121" y="0.0" width="105" height="105"/>
@@ -176,6 +192,11 @@
                                                             <constraint firstItem="NVT-7T-LCu" firstAttribute="width" secondItem="Z9Z-fh-sdT" secondAttribute="width" multiplier="0.25" id="hVr-YZ-bBJ"/>
                                                             <constraint firstItem="NVT-7T-LCu" firstAttribute="centerY" secondItem="Z9Z-fh-sdT" secondAttribute="centerY" id="wB0-xY-4hf"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
                                             </stackView>
@@ -190,6 +211,11 @@
                                     <constraint firstAttribute="trailing" secondItem="Jet-gy-x7s" secondAttribute="trailing" constant="16" id="Htr-L9-JJK"/>
                                     <constraint firstItem="Jet-gy-x7s" firstAttribute="top" secondItem="a5g-a5-4wO" secondAttribute="top" constant="16" id="J6f-VQ-MgV"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="3AI-nF-qqq"/>
@@ -201,7 +227,7 @@
                                 </variation>
                                 <connections>
                                     <outlet property="firstBottomImage" destination="87V-ZH-eH4" id="Lva-QQ-lgy"/>
-                                    <outlet property="firtTopImage" destination="79R-PV-jQy" id="18K-HA-r9l"/>
+                                    <outlet property="firstTopImage" destination="79R-PV-jQy" id="M12-n7-xXT"/>
                                     <outlet property="secondBottomImage" destination="Z9Z-fh-sdT" id="hhu-Py-5iH"/>
                                     <outlet property="secondTopImage" destination="V9W-GG-Y67" id="u9M-DP-MX9"/>
                                 </connections>
@@ -209,16 +235,24 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="F1X-FT-t8i" userLabel="Bottom HStack">
                                 <rect key="frame" x="31" y="388.5" width="258" height="66.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LvM-uD-lHF">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LvM-uD-lHF">
                                         <rect key="frame" x="0.0" y="0.0" width="66.5" height="66.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="LvM-uD-lHF" secondAttribute="height" multiplier="1:1" id="BsM-0v-z73"/>
                                         </constraints>
                                         <color key="tintColor" red="0.062745101750000004" green="0.40000003579999999" blue="0.59607845540000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Layout 1">
-                                            <backgroundConfiguration key="background" image="Layout 1"/>
-                                            <fontDescription key="titleFontDescription" name="Delm-Medium" family="Delm" pointSize="1"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <backgroundConfiguration key="background" image="Layout 1" imageContentMode="scaleToFill"/>
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Style 1">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.062745101750000004" green="0.40000003579999999" blue="0.59607845540000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <font key="NSFont" size="11" name="Delm-Medium"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                         </buttonConfiguration>
                                         <variation key="heightClass=compact">
                                             <mask key="constraints">
@@ -241,9 +275,16 @@
                                         </constraints>
                                         <color key="tintColor" red="0.062745101750000004" green="0.40000003579999999" blue="0.59607845540000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Layout 2">
-                                            <backgroundConfiguration key="background" image="Layout 2"/>
-                                            <fontDescription key="titleFontDescription" name="Delm-Medium" family="Delm" pointSize="1"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <backgroundConfiguration key="background" image="Layout 2" imageContentMode="scaleToFill"/>
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Style 2">
+                                                    <attributes>
+                                                        <font key="NSFont" size="11" name="Delm-Medium"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                         </buttonConfiguration>
                                         <variation key="heightClass=compact">
                                             <mask key="constraints">
@@ -266,9 +307,16 @@
                                         </constraints>
                                         <color key="tintColor" red="0.062745101750000004" green="0.40000003579999999" blue="0.59607845540000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Layout 3">
-                                            <backgroundConfiguration key="background" image="Layout 3"/>
-                                            <fontDescription key="titleFontDescription" name="Delm-Medium" family="Delm" pointSize="1"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <backgroundConfiguration key="background" image="Layout 3" imageContentMode="scaleToFill"/>
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Style 3">
+                                                    <attributes>
+                                                        <font key="NSFont" size="11" name="Delm-Medium"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
                                         </buttonConfiguration>
                                         <variation key="heightClass=compact">
                                             <mask key="constraints">
@@ -430,18 +478,15 @@
                     </view>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="layout1" destination="LvM-uD-lHF" id="IXN-IQ-MWG"/>
-                        <outlet property="layout1Button" destination="LvM-uD-lHF" id="vSp-Xb-EnK"/>
-                        <outlet property="layout2" destination="oWp-Cs-Ddn" id="0af-XU-Wm9"/>
+                        <outlet property="layout1Button" destination="LvM-uD-lHF" id="EE0-sZ-dNJ"/>
                         <outlet property="layout2Button" destination="oWp-Cs-Ddn" id="d7E-b1-ywW"/>
-                        <outlet property="layout3" destination="n33-Am-pjG" id="nRp-8d-hTV"/>
                         <outlet property="layout3Button" destination="n33-Am-pjG" id="xDH-B8-9El"/>
                         <outlet property="layoutView" destination="a5g-a5-4wO" id="dpi-By-VtY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.74647887323944" y="95.625"/>
+            <point key="canvasLocation" x="31.875" y="95"/>
         </scene>
     </scenes>
     <resources>

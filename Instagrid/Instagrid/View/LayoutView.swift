@@ -30,19 +30,29 @@ class LayoutView: UIView {
         switch style {
         case .layout1:
             firstTopImage?.image = UIImage()
+            firstTopImage?.isHidden = false
             secondTopImage?.isHidden = true
             firstBottomImage?.image = UIImage()
+            firstBottomImage?.isHidden = false
             secondBottomImage?.image = UIImage()
+            secondBottomImage?.isHidden = false
         case .layout2:
             firstTopImage?.image = UIImage()
+            firstTopImage?.isHidden = false
             secondTopImage?.image = UIImage()
+            secondTopImage?.isHidden = false
             firstBottomImage?.image = UIImage()
+            firstBottomImage?.isHidden = false
             secondBottomImage?.isHidden = true
         case .layout3:
             firstTopImage?.image = UIImage()
+            firstTopImage?.isHidden = false
             secondTopImage?.image = UIImage()
+            secondTopImage?.isHidden = false
             firstBottomImage?.image = UIImage()
+            firstBottomImage?.isHidden = false
             secondBottomImage?.image = UIImage()
+            secondBottomImage?.isHidden = false
         }
         
     }
