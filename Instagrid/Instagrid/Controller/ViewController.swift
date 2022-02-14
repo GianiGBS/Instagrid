@@ -22,26 +22,21 @@ class ViewController: UIViewController {
         case layout1, layout2, layout3
     }
     
-    var style : Style = .layout3 {
-        didSet {
-            setImageButton(style)
-        }
-    }
+    
     private func setImageButton(_ style: Style) {
         switch style {
         case .layout1:
-            layout1Button.setBackgroundImage(UIImage(named: "Groupe 1"), for: UIControl.State.selected)
-            layout2Button.setBackgroundImage(UIImage(named: "Layout 2"), for: UIControl.State.normal)
-            layout3Button.setBackgroundImage(UIImage(named: "Layout 3"), for: UIControl.State.normal)
+            layout1Button.setImage(UIImage(named: "Groupe 1"), for: .normal)
+            layout2Button.setImage(UIImage(named: "Layout 2"), for: .normal)
+            layout3Button.setImage(UIImage(named: "Layout 3"), for: .normal)
         case .layout2:
-            layout1Button.setBackgroundImage(UIImage(named: "Layout 1"), for: UIControl.State.normal)
-            layout2Button.setBackgroundImage(UIImage(named: "Groupe 2"), for: UIControl.State.normal)
-            layout3Button.setBackgroundImage(UIImage(named: "Layout 3"), for: UIControl.State.normal)
+            layout1Button.setImage(UIImage(named: "Layout 1"), for: .normal)
+            layout2Button.setImage(UIImage(named: "Groupe 2"), for: .normal)
+            layout3Button.setImage(UIImage(named: "Layout 3"), for: .normal)
         case .layout3:
-            layout1Button.setBackgroundImage(UIImage(named: "Layout 1"), for: UIControl.State.normal)
-            layout2Button.setBackgroundImage(UIImage(named: "Layout 2"), for: UIControl.State.normal)
-            layout3Button.setBackgroundImage(UIImage(named: "Groupe 3"), for: UIControl.State.normal)
-            
+            layout1Button.setImage(UIImage(named: "Layout 1"), for: .normal)
+            layout2Button.setImage(UIImage(named: "Layout 2"), for: .normal)
+            layout3Button.setImage(UIImage(named: "Groupe 3"), for: .normal)
         }
     }
     
@@ -54,19 +49,19 @@ class ViewController: UIViewController {
     
     @IBAction func didTapLayout1Button() {
         //changeLayout()
-        self.style = .layout1
+        setImageButton(.layout1)
         layout1Button.titleLabel?.isHidden = true
         layoutView.style = .layout1
     }
     @IBAction func didTapLayout2Button() {
         //changeLayout()
-        self.style = .layout2
+        setImageButton(.layout2)
         layout2Button.titleLabel?.isHidden = true
         layoutView.style = .layout2
     }
     @IBAction func didTapLayout3Button() {
         //changeLayout()
-        self.style = .layout3
+        setImageButton(.layout3)
         layout3Button.titleLabel?.isHidden = true
         layoutView.style = .layout3
     }
