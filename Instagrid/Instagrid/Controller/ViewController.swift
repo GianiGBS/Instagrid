@@ -7,21 +7,31 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    //Top HStack
-    
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    //Top Stack
+    @IBAction func swipeToShare(_ sender: UISwipeGestureRecognizer) {
+        shareLayoutView()
+        print(sender.direction)
+    }
+    @IBOutlet var swipeGesture: UISwipeGestureRecognizer!
     
     // Layout View
     @IBOutlet weak var layoutView: LayoutView!
+    @IBOutlet var addPictureButtons: [UIButton]!
+    var currentButton = 0
+    @IBAction func addImageTapped(_ sender: UIButton) {
+        currentButton = sender.tag
+        imagePickerController()
+    }
     
     // Bottom HStack
     @IBOutlet weak var layout1Button: UIButton!
     @IBOutlet weak var layout2Button: UIButton!
     @IBOutlet weak var layout3Button: UIButton!
+    
     enum Style {
         case layout1, layout2, layout3
     }
-    
     
     private func setImageButton(_ style: Style) {
         switch style {
@@ -42,10 +52,24 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
+        self.initSwipeDirection()
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        DispatchQueue.main.async {
+            self.initSwipeDirection()
+        }
+    }
+    
+    private func initSwipeDirection() {
+        if UIApplication.shared.statusBarOrientation.isPortrait {
+            swipeGesture.direction = .up
+        } else {
+            swipeGesture.direction = .left
+        }
+    }
     
     @IBAction func didTapLayout1Button() {
         //changeLayout()
@@ -66,10 +90,39 @@ class ViewController: UIViewController {
         layoutView.style = .layout3
     }
     
-    private func changeLayout() {
-        // Modifier image du bouton
-        // Modifier le style depuis LayoutView
+    func imagePickerController() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
+    }
+ 
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            addPictureButtons[currentButton].setImage(editedImage, for: .normal)
+            
+        }
+        else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            addPictureButtons[currentButton].setImage(originalImage, for: .normal)
+        }
+        dismiss(animated: true, completion: nil)
     }
     
+    func shareLayoutView() {
+        let items = [UIImage.init(view: layoutView)]
+        let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(ac, animated: true)
+    }
+}
 
+extension UIImage {
+    convenience init(view: UIView) {
+
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.isOpaque, 0.0)
+    view.drawHierarchy(in: view.bounds, afterScreenUpdates: false)
+    let image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    self.init(cgImage: (image?.cgImage)!)
+    }
 }

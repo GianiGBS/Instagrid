@@ -26,5 +26,7 @@
 		<string>Delm-Medium</string>
 		<string>ThirstySoftRegular</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string> Autoriser l&apos;accès à la bibliothèque ?</string>
 </dict>
 </plist>
