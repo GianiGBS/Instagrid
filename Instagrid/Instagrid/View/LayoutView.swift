@@ -12,14 +12,12 @@ class LayoutView: UIView {
 // Top stack View
     @IBOutlet var firstTopImage : UIView?
     @IBOutlet var secondTopImage : UIView?
+    
 // Bottom stack View
     @IBOutlet var firstBottomImage : UIView?
     @IBOutlet var secondBottomImage : UIView?
     
-// Button
-    
-    
-    
+// LayoutView Style
     enum Style {
         case layout1, layout2, layout3
     }
@@ -29,7 +27,6 @@ class LayoutView: UIView {
             setStyle(style)
         }
     }
-    
     private func setStyle(_ style: Style) {
         switch style {
         case .layout1:
@@ -48,8 +45,5 @@ class LayoutView: UIView {
             firstBottomImage?.isHidden = false
             secondBottomImage?.isHidden = false
         }
-        
     }
-    
-    
 }

@@ -8,14 +8,15 @@
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    //Top Stack
+    
+//Top Stack
     @IBAction func swipeToShare(_ sender: UISwipeGestureRecognizer) {
         shareLayoutView()
         print(sender.direction)
     }
     @IBOutlet var swipeGesture: UISwipeGestureRecognizer!
     
-    // Layout View
+// Layout View
     @IBOutlet weak var layoutView: LayoutView!
     @IBOutlet var addPictureButtons: [UIButton]!
     var currentButton = 0
@@ -23,16 +24,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         currentButton = sender.tag
         imagePickerController()
     }
-    
-    // Bottom HStack
+// Bottom HStack
     @IBOutlet weak var layout1Button: UIButton!
     @IBOutlet weak var layout2Button: UIButton!
     @IBOutlet weak var layout3Button: UIButton!
     
+// Selected Style Button
     enum Style {
         case layout1, layout2, layout3
     }
-    
     private func setImageButton(_ style: Style) {
         switch style {
         case .layout1:
@@ -52,7 +52,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.initSwipeDirection()
     }
     
@@ -62,7 +61,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.initSwipeDirection()
         }
     }
-    
+// Init Swipe direction
     private func initSwipeDirection() {
         if UIApplication.shared.statusBarOrientation.isPortrait {
             swipeGesture.direction = .up
@@ -70,26 +69,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             swipeGesture.direction = .left
         }
     }
-    
+// Action Button from Bottom stack
     @IBAction func didTapLayout1Button() {
-        //changeLayout()
         setImageButton(.layout1)
         layout1Button.titleLabel?.isHidden = true
         layoutView.style = .layout1
     }
     @IBAction func didTapLayout2Button() {
-        //changeLayout()
         setImageButton(.layout2)
         layout2Button.titleLabel?.isHidden = true
         layoutView.style = .layout2
     }
     @IBAction func didTapLayout3Button() {
-        //changeLayout()
         setImageButton(.layout3)
         layout3Button.titleLabel?.isHidden = true
         layoutView.style = .layout3
     }
-    
+// Picking Image from library
     func imagePickerController() {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .photoLibrary
@@ -101,14 +97,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             addPictureButtons[currentButton].setImage(editedImage, for: .normal)
-            
+            addPictureButtons[currentButton].contentMode = .scaleAspectFill
+            addPictureButtons[currentButton].clipsToBounds = true
         }
         else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             addPictureButtons[currentButton].setImage(originalImage, for: .normal)
+            addPictureButtons[currentButton].contentMode = .scaleAspectFill
+            addPictureButtons[currentButton].clipsToBounds = true
         }
+        // Close picker
         dismiss(animated: true, completion: nil)
     }
-    
+// Share creation
     func shareLayoutView() {
         let items = [UIImage.init(view: layoutView)]
         let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
@@ -118,7 +118,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
 extension UIImage {
     convenience init(view: UIView) {
-
     UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.isOpaque, 0.0)
     view.drawHierarchy(in: view.bounds, afterScreenUpdates: false)
     let image = UIGraphicsGetImageFromCurrentImageContext()

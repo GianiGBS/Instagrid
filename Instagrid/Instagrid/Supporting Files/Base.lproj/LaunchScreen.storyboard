@@ -17,21 +17,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="ai8-8y-X3S">
-                                <rect key="frame" x="80" y="154.5" width="160.5" height="259.5"/>
+                                <rect key="frame" x="86.5" y="163" width="147" height="242"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="Icon 60pt" translatesAutoresizingMaskIntoConstraints="NO" id="wbY-gf-Jjq">
-                                        <rect key="frame" x="0.0" y="0.0" width="160.5" height="160.5"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="icone" translatesAutoresizingMaskIntoConstraints="NO" id="wbY-gf-Jjq">
+                                        <rect key="frame" x="0.0" y="0.0" width="147" height="147"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="wbY-gf-Jjq" secondAttribute="height" multiplier="1:1" id="jBa-q1-lMr"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UUd-T9-usl">
-                                        <rect key="frame" x="0.0" y="212.5" width="160.5" height="47"/>
+                                        <rect key="frame" x="0.0" y="199" width="147" height="43"/>
                                         <attributedString key="attributedText">
                                             <fragment content=" Instagrid ">
                                                 <attributes>
-                                                    <color key="NSColor" red="0.062745101750000004" green="0.40000003579999999" blue="0.59607845540000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <font key="NSFont" size="36" name="ThirstySoftRegular"/>
+                                                    <color key="NSColor" red="0.94117647410000005" green="0.94117647410000005" blue="0.94117647410000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <font key="NSFont" size="33" name="ThirstySoftRegular"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
@@ -42,7 +42,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.062745101750000004" green="0.40000003579999999" blue="0.59607845540000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="ai8-8y-X3S" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="agd-RS-APl"/>
                             <constraint firstItem="ai8-8y-X3S" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="pGA-Y6-mpd"/>
@@ -55,6 +55,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon 60pt" width="60" height="60"/>
+        <image name="icone" width="142" height="142"/>
     </resources>
 </document>
