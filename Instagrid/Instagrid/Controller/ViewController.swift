@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
 //Top Stack
+    @IBOutlet var swipeLabel: UILabel!
     @IBAction func swipeToShare(_ sender: UISwipeGestureRecognizer) {
         shareLayoutView()
         print(sender.direction)
@@ -39,14 +40,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             layout1Button.setImage(UIImage(named: "Groupe 1"), for: .normal)
             layout2Button.setImage(UIImage(named: "Layout 2"), for: .normal)
             layout3Button.setImage(UIImage(named: "Layout 3"), for: .normal)
+            addPictureButtons[0].imageView?.contentMode = .scaleAspectFill
+            addPictureButtons[2].imageView?.contentMode = .scaleAspectFit
         case .layout2:
             layout1Button.setImage(UIImage(named: "Layout 1"), for: .normal)
             layout2Button.setImage(UIImage(named: "Groupe 2"), for: .normal)
             layout3Button.setImage(UIImage(named: "Layout 3"), for: .normal)
+            addPictureButtons[0].imageView?.contentMode = .scaleAspectFit
+            addPictureButtons[2].imageView?.contentMode = .scaleAspectFill
         case .layout3:
             layout1Button.setImage(UIImage(named: "Layout 1"), for: .normal)
             layout2Button.setImage(UIImage(named: "Layout 2"), for: .normal)
             layout3Button.setImage(UIImage(named: "Groupe 3"), for: .normal)
+            addPictureButtons[0].imageView?.contentMode = .scaleAspectFit
+            addPictureButtons[2].imageView?.contentMode = .scaleAspectFit
         }
     }
     
@@ -65,8 +72,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     private func initSwipeDirection() {
         if UIApplication.shared.statusBarOrientation.isPortrait {
             swipeGesture.direction = .up
+            swipeLabel.text = "Swipe up to share"
         } else {
             swipeGesture.direction = .left
+            swipeLabel.text = "Swipe left to share"
         }
     }
 // Action Button from Bottom stack
@@ -96,13 +105,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
  
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            //addPictureButtons[currentButton].imageView?.contentMode = .center
             addPictureButtons[currentButton].setImage(editedImage, for: .normal)
-            addPictureButtons[currentButton].contentMode = .scaleAspectFill
             addPictureButtons[currentButton].clipsToBounds = true
         }
         else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            // addPictureButtons[currentButton].imageView?.contentMode = .scaleAspectFit
             addPictureButtons[currentButton].setImage(originalImage, for: .normal)
-            addPictureButtons[currentButton].contentMode = .scaleAspectFill
             addPictureButtons[currentButton].clipsToBounds = true
         }
         // Close picker

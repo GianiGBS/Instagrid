@@ -23,8 +23,8 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Delm-Medium</string>
-		<string>ThirstySoftRegular</string>
+		<string>Delm-Medium.otf</string>
+		<string>ThirstySoftRegular.otf</string>
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string> Autoriser l&apos;accès à la bibliothèque ?</string>

@@ -8,6 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Delm-Medium.otf">
+            <string>Delm-Medium</string>
+        </array>
         <array key="ThirstySoftRegular.otf">
             <string>ThirstySoftRegular</string>
         </array>
@@ -43,29 +46,11 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <variation key="heightClass=compact" image="chevron.left" catalog="system"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ok7-Dz-lgo">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to share" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ok7-Dz-lgo">
                                         <rect key="frame" x="71" y="30" width="160.5" height="29"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="Swipe up to share">
-                                                <attributes>
-                                                    <color key="NSColor" red="0.94117647410000005" green="0.94117647410000005" blue="0.94117647410000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <font key="NSFont" size="26" name="Delm-Medium"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
+                                        <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="26"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact">
-                                            <attributedString key="attributedText">
-                                                <fragment content="Swipe left to share">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.94117647410000005" green="0.94117647410000005" blue="0.94117647410000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <font key="NSFont" size="26" name="Delm-Medium"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                        </variation>
                                     </label>
                                 </subviews>
                                 <gestureRecognizers/>
@@ -464,6 +449,7 @@
                         <outlet property="layout3Button" destination="n33-Am-pjG" id="xDH-B8-9El"/>
                         <outlet property="layoutView" destination="a5g-a5-4wO" id="dpi-By-VtY"/>
                         <outlet property="swipeGesture" destination="SyE-CP-FmR" id="t5g-jy-ess"/>
+                        <outlet property="swipeLabel" destination="ok7-Dz-lgo" id="TQU-Rd-duw"/>
                         <outletCollection property="addPictureButtons" destination="bjE-LB-zso" collectionClass="NSMutableArray" id="zm2-zk-muF"/>
                         <outletCollection property="addPictureButtons" destination="t0L-Z9-59Q" collectionClass="NSMutableArray" id="xYF-1R-t1C"/>
                         <outletCollection property="addPictureButtons" destination="Eae-wX-qIi" collectionClass="NSMutableArray" id="xlK-nE-Mtw"/>
