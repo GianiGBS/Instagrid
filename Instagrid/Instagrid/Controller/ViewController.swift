@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-//Top Stack
+// Top Stack
     @IBOutlet var swipeLabel: UILabel!
     @IBAction func swipeToShare(_ sender: UISwipeGestureRecognizer) {
         shareLayoutView()
@@ -41,19 +41,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             layout2Button.setImage(UIImage(named: "Layout 2"), for: .normal)
             layout3Button.setImage(UIImage(named: "Layout 3"), for: .normal)
             addPictureButtons[0].imageView?.contentMode = .scaleAspectFill
-            addPictureButtons[2].imageView?.contentMode = .scaleAspectFit
+            addPictureButtons[2].imageView?.contentMode = .scaleToFill
         case .layout2:
             layout1Button.setImage(UIImage(named: "Layout 1"), for: .normal)
             layout2Button.setImage(UIImage(named: "Groupe 2"), for: .normal)
             layout3Button.setImage(UIImage(named: "Layout 3"), for: .normal)
-            addPictureButtons[0].imageView?.contentMode = .scaleAspectFit
+            addPictureButtons[0].imageView?.contentMode = .scaleToFill
             addPictureButtons[2].imageView?.contentMode = .scaleAspectFill
         case .layout3:
             layout1Button.setImage(UIImage(named: "Layout 1"), for: .normal)
             layout2Button.setImage(UIImage(named: "Layout 2"), for: .normal)
             layout3Button.setImage(UIImage(named: "Groupe 3"), for: .normal)
-            addPictureButtons[0].imageView?.contentMode = .scaleAspectFit
-            addPictureButtons[2].imageView?.contentMode = .scaleAspectFit
+            addPictureButtons[0].imageView?.contentMode = .scaleToFill
+            addPictureButtons[2].imageView?.contentMode = .scaleToFill
         }
     }
     
@@ -105,12 +105,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
  
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            //addPictureButtons[currentButton].imageView?.contentMode = .center
             addPictureButtons[currentButton].setImage(editedImage, for: .normal)
             addPictureButtons[currentButton].clipsToBounds = true
         }
         else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            // addPictureButtons[currentButton].imageView?.contentMode = .scaleAspectFit
             addPictureButtons[currentButton].setImage(originalImage, for: .normal)
             addPictureButtons[currentButton].clipsToBounds = true
         }

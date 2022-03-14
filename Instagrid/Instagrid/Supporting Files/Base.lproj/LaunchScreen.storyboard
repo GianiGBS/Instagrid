@@ -22,21 +22,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="ai8-8y-X3S">
-                                <rect key="frame" x="86.5" y="163" width="147" height="242"/>
+                                <rect key="frame" x="89" y="213" width="142" height="142"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="icone" translatesAutoresizingMaskIntoConstraints="NO" id="wbY-gf-Jjq">
-                                        <rect key="frame" x="0.0" y="0.0" width="147" height="147"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="142" height="142"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="wbY-gf-Jjq" secondAttribute="height" multiplier="1:1" id="jBa-q1-lMr"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Instagrid " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UUd-T9-usl">
                                         <rect key="frame" x="0.0" y="199" width="147" height="43"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="33"/>
                                         <color key="textColor" red="0.94117647410000005" green="0.94117647410000005" blue="0.94117647410000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="UUd-T9-usl"/>
+                                    </mask>
+                                </variation>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
