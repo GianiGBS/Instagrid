@@ -18,7 +18,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet var swipeGesture: UISwipeGestureRecognizer!
     
 // Layout View
-    @IBOutlet weak var layoutView: LayoutView!
+    @IBOutlet var layoutView : UIView!
     @IBOutlet var addPictureButtons: [UIButton]!
     var currentButton = 0
     @IBAction func addImageTapped(_ sender: UIButton) {
@@ -34,26 +34,35 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     enum Style {
         case layout1, layout2, layout3
     }
-    private func setImageButton(_ style: Style) {
+    private func setStyleButton(_ style: Style) {
         switch style {
         case .layout1:
-            layout1Button.setImage(UIImage(named: "Groupe 1"), for: .normal)
-            layout2Button.setImage(UIImage(named: "Layout 2"), for: .normal)
-            layout3Button.setImage(UIImage(named: "Layout 3"), for: .normal)
+            layout1Button.isSelected = true
+            layout2Button.isSelected = false
+            layout3Button.isSelected = false
+            
             addPictureButtons[0].imageView?.contentMode = .scaleAspectFill
+            addPictureButtons[1].isHidden = true
             addPictureButtons[2].imageView?.contentMode = .scaleToFill
+            addPictureButtons[3].isHidden = false
         case .layout2:
-            layout1Button.setImage(UIImage(named: "Layout 1"), for: .normal)
-            layout2Button.setImage(UIImage(named: "Groupe 2"), for: .normal)
-            layout3Button.setImage(UIImage(named: "Layout 3"), for: .normal)
+            layout2Button.isSelected = true
+            layout3Button.isSelected = false
+            layout1Button.isSelected = false
+            
             addPictureButtons[0].imageView?.contentMode = .scaleToFill
+            addPictureButtons[1].isHidden = false
             addPictureButtons[2].imageView?.contentMode = .scaleAspectFill
+            addPictureButtons[3].isHidden = true
         case .layout3:
-            layout1Button.setImage(UIImage(named: "Layout 1"), for: .normal)
-            layout2Button.setImage(UIImage(named: "Layout 2"), for: .normal)
-            layout3Button.setImage(UIImage(named: "Groupe 3"), for: .normal)
+            layout3Button.isSelected = true
+            layout1Button.isSelected = false
+            layout2Button.isSelected = false
+            
             addPictureButtons[0].imageView?.contentMode = .scaleToFill
+            addPictureButtons[1].isHidden = false
             addPictureButtons[2].imageView?.contentMode = .scaleToFill
+            addPictureButtons[3].isHidden = false
         }
     }
     
@@ -80,19 +89,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 // Action Button from Bottom stack
     @IBAction func didTapLayout1Button() {
-        setImageButton(.layout1)
+        setStyleButton(.layout1)
         layout1Button.titleLabel?.isHidden = true
-        layoutView.style = .layout1
     }
     @IBAction func didTapLayout2Button() {
-        setImageButton(.layout2)
+        setStyleButton(.layout2)
         layout2Button.titleLabel?.isHidden = true
-        layoutView.style = .layout2
     }
     @IBAction func didTapLayout3Button() {
-        setImageButton(.layout3)
+        setStyleButton(.layout3)
         layout3Button.titleLabel?.isHidden = true
-        layoutView.style = .layout3
     }
 // Picking Image from library
     func imagePickerController() {
