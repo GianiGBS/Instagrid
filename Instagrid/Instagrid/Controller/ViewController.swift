@@ -11,7 +11,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
 // Top Stack
     @IBOutlet var swipeLabel: UILabel!
-    @IBAction func swipeToShare(_ sender: UISwipeGestureRecognizer) {
+    @IBAction func didSwipeToShare(_ sender: UISwipeGestureRecognizer) {
+        switch sender.direction {
+        case .up:
+            transformLayoutViewWithUp(gesture: sender)
+        case .left:
+            transformLayoutViewWithLeft(gesture: sender)
+        default:
+            break
+        }
         shareLayoutView()
         print(sender.direction)
     }
@@ -68,7 +76,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.initSwipeDirection()
+        
+        let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeToShare(_:)))
+        layoutView.addGestureRecognizer(swipeGestureRecognizer)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -82,10 +94,40 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if UIApplication.shared.statusBarOrientation.isPortrait {
             swipeGesture.direction = .up
             swipeLabel.text = "Swipe up to share"
+            
         } else {
             swipeGesture.direction = .left
             swipeLabel.text = "Swipe left to share"
         }
+    }
+// Transform LayoutView when swipe
+    private func transformLayoutViewWithUp(gesture: UISwipeGestureRecognizer) {
+        // let translation = gesture.location(in: layoutView)
+        let screenHeight = UIScreen.main.bounds.height
+        let translationtransform = CGAffineTransform(translationX: 0, y: -screenHeight)
+        UIView.animate(withDuration: 0.5, animations: {
+            self.layoutView.transform = translationtransform})
+        {(succes) in
+            if succes {
+                self.shareLayoutView()
+            }
+        }
+    }
+    private func transformLayoutViewWithLeft(gesture: UISwipeGestureRecognizer) {
+        // let translation = gesture.location(in: layoutView)
+        let screenWidth = UIScreen.main.bounds.width
+        let translationtransform = CGAffineTransform(translationX: -screenWidth, y:0)
+        UIView.animate(withDuration: 0.5, animations: {
+            self.layoutView.transform = translationtransform})
+        {(succes) in
+            if succes {
+                self.shareLayoutView()
+            }
+        }
+    }
+    
+    private func showLayoutView() {
+        layoutView.transform = .identity
     }
 // Action Button from Bottom stack
     @IBAction func didTapLayout1Button() {
@@ -108,7 +150,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
     }
- 
+// Select Image from library
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             addPictureButtons[currentButton].setImage(editedImage, for: .normal)
@@ -126,6 +168,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let items = [UIImage.init(view: layoutView)]
         let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(ac, animated: true)
+        
     }
 }
 
