@@ -12,14 +12,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 // Top Stack
     @IBOutlet var swipeLabel: UILabel!
     @IBAction func didSwipeToShare(_ sender: UISwipeGestureRecognizer) {
-        switch sender.direction {
-        case .up:
-            transformLayoutViewWithUp(gesture: sender)
-        case .left:
-            transformLayoutViewWithLeft(gesture: sender)
-        default:
-            break
-        }
+        transformLayoutViewWith(gesture: sender)
         shareLayoutView()
         print(sender.direction)
     }
@@ -100,35 +93,33 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             swipeLabel.text = "Swipe left to share"
         }
     }
-// Transform LayoutView when swipe
-    private func transformLayoutViewWithUp(gesture: UISwipeGestureRecognizer) {
-        // let translation = gesture.location(in: layoutView)
+// Animate LayoutView when swipe
+    private func transformLayoutViewWith(gesture: UISwipeGestureRecognizer) {
         let screenHeight = UIScreen.main.bounds.height
-        let translationtransform = CGAffineTransform(translationX: 0, y: -screenHeight)
-        UIView.animate(withDuration: 0.5, animations: {
-            self.layoutView.transform = translationtransform})
-        {(succes) in
-            if succes {
-                self.shareLayoutView()
-            }
+        let screenWidth = UIScreen.main.bounds.width
+        if swipeGesture.direction == .up {
+            let translationtransform = CGAffineTransform(translationX: 0, y: -screenHeight)
+            UIView.animate(withDuration: 0.5, animations: {
+                self.layoutView.transform = translationtransform})
+        } else if swipeGesture.direction == .left {
+            let translationtransform = CGAffineTransform(translationX: -screenWidth, y:0)
+            UIView.animate(withDuration: 0.5, animations: {
+                self.layoutView.transform = translationtransform})
         }
     }
-    private func transformLayoutViewWithLeft(gesture: UISwipeGestureRecognizer) {
-        // let translation = gesture.location(in: layoutView)
+//Animate Layout to comeback
+    private func showLayoutView() {
+        let screenHeight = UIScreen.main.bounds.height
         let screenWidth = UIScreen.main.bounds.width
-        let translationtransform = CGAffineTransform(translationX: -screenWidth, y:0)
-        UIView.animate(withDuration: 0.5, animations: {
-            self.layoutView.transform = translationtransform})
-        {(succes) in
-            if succes {
-                self.shareLayoutView()
-            }
+        layoutView.transform = .identity
+        if swipeGesture.direction == .up {
+            layoutView.transform = CGAffineTransform(translationX: 0, y: -screenHeight)
+        } else if swipeGesture.direction == .left {
+            layoutView.transform = CGAffineTransform(translationX: -screenWidth, y:0)
         }
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: [], animations: {self.layoutView.transform = .identity}, completion: nil)
     }
     
-    private func showLayoutView() {
-        layoutView.transform = .identity
-    }
 // Action Button from Bottom stack
     @IBAction func didTapLayout1Button() {
         setStyleButton(.layout1)
@@ -167,8 +158,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func shareLayoutView() {
         let items = [UIImage.init(view: layoutView)]
         let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
-        present(ac, animated: true)
+        present(ac, animated: true,completion: nil)
         
+        //Completion handler
+        ac.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed:
+        Bool, arrayReturnedItems: [Any]?, error: Error?) in
+            if completed {
+                self.showLayoutView()
+                print("share completed")
+                return
+            } else {
+                self.showLayoutView()
+                print("cancel")
+            }
+            if let shareError = error {
+                self.shareLayoutView()
+                print("error while sharing: \(shareError.localizedDescription)")
+            }
+        }
     }
 }
 

@@ -177,7 +177,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="F1X-FT-t8i" userLabel="Bottom HStack">
                                 <rect key="frame" x="31" y="388.5" width="258" height="66.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LvM-uD-lHF">
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LvM-uD-lHF">
                                         <rect key="frame" x="0.0" y="0.0" width="66.5" height="66.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="LvM-uD-lHF" secondAttribute="height" multiplier="1:1" id="BsM-0v-z73"/>
@@ -200,7 +200,7 @@
                                             <action selector="didTapLayout1Button" destination="BYZ-38-t0r" eventType="touchUpInside" id="k2v-xe-vm9"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWp-Cs-Ddn">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWp-Cs-Ddn">
                                         <rect key="frame" x="95.5" y="0.0" width="67" height="66.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="oWp-Cs-Ddn" secondAttribute="height" multiplier="1:1" id="T8s-FX-hzA"/>
@@ -223,7 +223,7 @@
                                             <action selector="didTapLayout2Button" destination="BYZ-38-t0r" eventType="touchUpInside" id="lA2-92-wwS"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n33-Am-pjG">
+                                    <button opaque="NO" contentMode="scaleAspectFit" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n33-Am-pjG">
                                         <rect key="frame" x="191.5" y="0.0" width="66.5" height="66.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="n33-Am-pjG" secondAttribute="height" multiplier="1:1" id="gzJ-EC-pS2"/>
@@ -393,9 +393,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Groupe 1" width="80" height="80"/>
-        <image name="Groupe 2" width="80" height="80"/>
-        <image name="Groupe 3" width="80" height="80"/>
+        <image name="Groupe 1" width="240" height="240"/>
+        <image name="Groupe 2" width="240" height="240"/>
+        <image name="Groupe 3" width="240" height="240"/>
         <image name="ImageType" width="510" height="510"/>
         <image name="Layout 1" width="80" height="80"/>
         <image name="Layout 2" width="80" height="80"/>
