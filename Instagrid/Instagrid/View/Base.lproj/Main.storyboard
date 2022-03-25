@@ -30,7 +30,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="0gb-Ey-PjN"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="26"/>
+                                <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact">
@@ -175,7 +175,7 @@
                                 </variation>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="F1X-FT-t8i" userLabel="Bottom HStack">
-                                <rect key="frame" x="31" y="388.5" width="258" height="66.5"/>
+                                <rect key="frame" x="31" y="391.5" width="258" height="66.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LvM-uD-lHF">
                                         <rect key="frame" x="0.0" y="0.0" width="66.5" height="66.5"/>
@@ -279,7 +279,7 @@
                             <constraint firstItem="a5g-a5-4wO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="b8W-ox-l1M"/>
                             <constraint firstItem="ASE-Rh-xCW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="7" id="cCO-4a-Xim"/>
                             <constraint firstItem="eKj-l8-87o" firstAttribute="trailing" secondItem="a5g-a5-4wO" secondAttribute="trailing" id="cM6-T8-9Di"/>
-                            <constraint firstAttribute="bottom" secondItem="F1X-FT-t8i" secondAttribute="bottom" constant="25" id="i7i-G3-DMx"/>
+                            <constraint firstAttribute="bottom" secondItem="F1X-FT-t8i" secondAttribute="bottom" constant="22" id="i7i-G3-DMx"/>
                             <constraint firstItem="F1X-FT-t8i" firstAttribute="centerY" secondItem="a5g-a5-4wO" secondAttribute="centerY" id="k8q-L0-Y96"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F1X-FT-t8i" secondAttribute="trailing" constant="20" id="kgx-Ka-Ccy"/>
                             <constraint firstItem="a5g-a5-4wO" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.80625" id="lar-3S-fDF"/>
