@@ -247,14 +247,6 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="iXg-cO-wV6"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="iXg-cO-wV6"/>
-                                    </mask>
-                                </variation>
                                 <variation key="heightClass=compact" alignment="fill" axis="vertical" distribution="fillProportionally" spacing="8"/>
                             </stackView>
                         </subviews>
