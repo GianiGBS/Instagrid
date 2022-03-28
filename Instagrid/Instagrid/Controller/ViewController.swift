@@ -14,7 +14,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func didSwipeToShare(_ sender: UISwipeGestureRecognizer) {
         transformLayoutViewWith(gesture: sender)
         shareLayoutView()
-        print(sender.direction)
+        // print(sender.direction)
     }
     @IBOutlet var swipeGesture: UISwipeGestureRecognizer!
     
@@ -46,19 +46,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             addPictureButtons[1].isHidden = true
             addPictureButtons[2].imageView?.contentMode = .scaleToFill
             addPictureButtons[3].isHidden = false
+            
         case .layout2:
+            layout1Button.isSelected = false
             layout2Button.isSelected = true
             layout3Button.isSelected = false
-            layout1Button.isSelected = false
             
             addPictureButtons[0].imageView?.contentMode = .scaleToFill
             addPictureButtons[1].isHidden = false
             addPictureButtons[2].imageView?.contentMode = .scaleAspectFill
             addPictureButtons[3].isHidden = true
+            
         case .layout3:
-            layout3Button.isSelected = true
             layout1Button.isSelected = false
             layout2Button.isSelected = false
+            layout3Button.isSelected = true
             
             addPictureButtons[0].imageView?.contentMode = .scaleToFill
             addPictureButtons[1].isHidden = false
@@ -165,15 +167,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         Bool, arrayReturnedItems: [Any]?, error: Error?) in
             if completed {
                 self.showLayoutView()
-                print("share completed")
+               // print("share completed")
                 return
             } else {
                 self.showLayoutView()
-                print("cancel")
+                // print("cancel")
             }
-            if let shareError = error {
+            if error != nil {
                 self.shareLayoutView()
-                print("error while sharing: \(shareError.localizedDescription)")
+                // print("error while sharing: \(shareError.localizedDescription)")
             }
         }
     }

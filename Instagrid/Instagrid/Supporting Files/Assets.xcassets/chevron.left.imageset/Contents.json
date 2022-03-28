@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Arrow Left.png",
+      "idiom" : "iphone"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
