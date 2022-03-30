@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
 // Top Stack
+    @IBOutlet var topStackView : UIStackView!
     @IBOutlet var swipeLabel: UILabel!
     @IBAction func didSwipeToShare(_ sender: UISwipeGestureRecognizer) {
         transformLayoutViewWith(gesture: sender)
@@ -102,11 +103,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if swipeGesture.direction == .up {
             let translationtransform = CGAffineTransform(translationX: 0, y: -screenHeight)
             UIView.animate(withDuration: 0.5, animations: {
-                self.layoutView.transform = translationtransform})
+                self.layoutView.transform = translationtransform; self.topStackView.transform = translationtransform})
         } else if swipeGesture.direction == .left {
             let translationtransform = CGAffineTransform(translationX: -screenWidth, y:0)
             UIView.animate(withDuration: 0.5, animations: {
-                self.layoutView.transform = translationtransform})
+                self.layoutView.transform = translationtransform; self.topStackView.transform = translationtransform})
         }
     }
 //Animate Layout to comeback
@@ -114,12 +115,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let screenHeight = UIScreen.main.bounds.height
         let screenWidth = UIScreen.main.bounds.width
         layoutView.transform = .identity
+        topStackView.transform = .identity
         if swipeGesture.direction == .up {
             layoutView.transform = CGAffineTransform(translationX: 0, y: -screenHeight)
+            topStackView.transform = CGAffineTransform(translationX: 0, y: -screenHeight)
         } else if swipeGesture.direction == .left {
             layoutView.transform = CGAffineTransform(translationX: -screenWidth, y:0)
+            topStackView.transform = CGAffineTransform(translationX: -screenWidth, y:0)
         }
-        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: [], animations: {self.layoutView.transform = .identity}, completion: nil)
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: [], animations: {self.layoutView.transform = .identity; self.topStackView.transform = .identity}, completion: nil)
     }
     
 // Action Button from Bottom stack
