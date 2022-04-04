@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UINavigationControllerDelegate {
     
 // Top Stack
     @IBOutlet var topStackView : UIStackView!
@@ -15,7 +15,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func didSwipeToShare(_ sender: UISwipeGestureRecognizer) {
         transformLayoutViewWith(gesture: sender)
         shareLayoutView()
-        // print(sender.direction)
     }
     @IBOutlet var swipeGesture: UISwipeGestureRecognizer!
     
@@ -36,44 +35,47 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     enum Style {
         case layout1, layout2, layout3
     }
+    
+    fileprivate func configureLayoutAndPictures(layout1IsSelected: Bool = false, layout2IsSelected: Bool = false, layout3IsSelected: Bool = false, imageViewButton0ContentMode: UIView.ContentMode, addPictureButton1IsHidden: Bool, imageViewButton2ContentMode: UIView.ContentMode, addPictureButton3IsHidden: Bool) {
+        layout1Button.isSelected = layout1IsSelected
+        layout2Button.isSelected = layout2IsSelected
+        layout3Button.isSelected = layout3IsSelected
+        
+        addPictureButtons[0].imageView?.contentMode = imageViewButton0ContentMode
+        addPictureButtons[1].isHidden = addPictureButton1IsHidden
+        addPictureButtons[2].imageView?.contentMode = imageViewButton2ContentMode
+        addPictureButtons[3].isHidden = addPictureButton3IsHidden
+    }
+    
     private func setStyleButton(_ style: Style) {
         switch style {
         case .layout1:
-            layout1Button.isSelected = true
-            layout2Button.isSelected = false
-            layout3Button.isSelected = false
-            
-            addPictureButtons[0].imageView?.contentMode = .scaleAspectFill
-            addPictureButtons[1].isHidden = true
-            addPictureButtons[2].imageView?.contentMode = .scaleToFill
-            addPictureButtons[3].isHidden = false
+            configureLayoutAndPictures(layout1IsSelected: true,
+                                       imageViewButton0ContentMode: .scaleAspectFill,
+                                       addPictureButton1IsHidden: true,
+                                       imageViewButton2ContentMode: .scaleToFill,
+                                       addPictureButton3IsHidden: false)
             
         case .layout2:
-            layout1Button.isSelected = false
-            layout2Button.isSelected = true
-            layout3Button.isSelected = false
-            
-            addPictureButtons[0].imageView?.contentMode = .scaleToFill
-            addPictureButtons[1].isHidden = false
-            addPictureButtons[2].imageView?.contentMode = .scaleAspectFill
-            addPictureButtons[3].isHidden = true
+            configureLayoutAndPictures(layout2IsSelected: true,
+                                       imageViewButton0ContentMode: .scaleToFill,
+                                       addPictureButton1IsHidden: false,
+                                       imageViewButton2ContentMode: .scaleAspectFill,
+                                       addPictureButton3IsHidden: true)
             
         case .layout3:
-            layout1Button.isSelected = false
-            layout2Button.isSelected = false
-            layout3Button.isSelected = true
-            
-            addPictureButtons[0].imageView?.contentMode = .scaleToFill
-            addPictureButtons[1].isHidden = false
-            addPictureButtons[2].imageView?.contentMode = .scaleToFill
-            addPictureButtons[3].isHidden = false
+            configureLayoutAndPictures(layout3IsSelected: true,
+                                       imageViewButton0ContentMode: .scaleToFill,
+                                       addPictureButton1IsHidden: false,
+                                       imageViewButton2ContentMode: .scaleToFill,
+                                       addPictureButton3IsHidden: false)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.initSwipeDirection()
+        initSwipeDirection()
         
         let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeToShare(_:)))
         layoutView.addGestureRecognizer(swipeGestureRecognizer)
@@ -90,7 +92,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if UIApplication.shared.statusBarOrientation.isPortrait {
             swipeGesture.direction = .up
             swipeLabel.text = "Swipe up to share"
-            
         } else {
             swipeGesture.direction = .left
             swipeLabel.text = "Swipe left to share"
@@ -139,27 +140,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         setStyleButton(.layout3)
         layout3Button.titleLabel?.isHidden = true
     }
-// Picking Image from library
-    func imagePickerController() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = true
-        present(imagePicker, animated: true, completion: nil)
-    }
-// Select Image from library
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            addPictureButtons[currentButton].setImage(editedImage, for: .normal)
-            addPictureButtons[currentButton].clipsToBounds = true
-        }
-        else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            addPictureButtons[currentButton].setImage(originalImage, for: .normal)
-            addPictureButtons[currentButton].clipsToBounds = true
-        }
-        // Close picker
-        dismiss(animated: true, completion: nil)
-    }
+
 // Share creation
     func shareLayoutView() {
         let items = [UIImage.init(view: layoutView)]
@@ -185,12 +166,28 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 }
 
-extension UIImage {
-    convenience init(view: UIView) {
-    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.isOpaque, 0.0)
-    view.drawHierarchy(in: view.bounds, afterScreenUpdates: false)
-    let image = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    self.init(cgImage: (image?.cgImage)!)
-    }
+extension ViewController: UIImagePickerControllerDelegate {
+    
+    // Picking Image from library
+        func imagePickerController() {
+            let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = true
+            present(imagePicker, animated: true, completion: nil)
+        }
+    
+    // Select Image from library
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+                addPictureButtons[currentButton].setImage(editedImage, for: .normal)
+                addPictureButtons[currentButton].clipsToBounds = true
+            }
+            else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                addPictureButtons[currentButton].setImage(originalImage, for: .normal)
+                addPictureButtons[currentButton].clipsToBounds = true
+            }
+            // Close picker
+            dismiss(animated: true, completion: nil)
+        }
 }
